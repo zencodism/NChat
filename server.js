@@ -6,12 +6,14 @@ var uid = require('uid');
 
 var db = require('./database'); // only Message model is exported
 var config = require('./config');
+var log = require('./logging');
 
 var crontab = require('node-crontab'); // for scheduled database cleanup
 
 db.sync().then(function(){
     crontab.scheduleJob("0 0 */" +
                         config.days_to_destroy + " * *", function(){
+        log.warn("Scheduled database cleanup.");
         db.truncate();
     });
 });
@@ -29,10 +31,11 @@ io.on('connection', function(socket){
             io.emit('incoming', message);
         });
     });
-        
-    
+            
     var user = uid(18);
+    log.info("User connected, generated username: " + user);
     socket.on('incoming', function(msg){
+        log.info("Passing down message: " + msg);
         var message = {
             'time': new Date(),
             'user': user,
@@ -49,5 +52,5 @@ io.on('connection', function(socket){
 
 
 http.listen(config.port, function(){
-  console.log('Server up and running, listening at port ' + config.port);
+  log.info('Server up and running, listening at port ' + config.port);
 });
