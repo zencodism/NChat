@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>NChat</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--        <link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="container">
+            <div class="row well chatbox">
+                <ul id="messages"></ul>
+            </div>
+            <div class="row inputbox">
+                <div class="col-lg-12">
+                    <form>
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control input-lg" id="m" autocomplete="off">
+                        <span class="input-group-btn">
+                            <button id="send" class="btn btn-default btn-lg" type="submit">Send</button>
+                        </span>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+<!--
+        <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+-->
+        <script>
+            window.jQuery || document.write('<script src="lib/jquery-1.11.3.min.js"><\/script>')
+            window.io || document.write('<script src="lib/socket.io-1.2.0.js"><\/script>')
+        </script>
+        <script src="client/client.js"></script>
+    </body>
+</html>

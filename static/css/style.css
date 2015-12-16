@@ -1,0 +1,34 @@
+html{
+    height: 100%;    
+}
+
+body{
+    background-image: url(../bg_texture.jpg);
+    height: 100%;
+}
+
+.container{
+    height: 100%;
+}
+
+.chatbox{
+    height: 85%;
+    overflow-y: auto;
+}
+
+.inputbox{
+    position: absolute;
+    bottom: 0px;
+}
+
+#messages{ 
+    list-style-type: none; margin: 0; padding: 0; 
+}
+
+#messages li{
+    padding: 5px 10px;
+}
+
+#messages li:nth-child(odd){
+    background: #eee;
+}
