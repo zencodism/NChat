@@ -5,11 +5,13 @@ var io = require('socket.io')(http);
 var uid = require('uid');
 
 var db = require('./database'); // only Message model is exported
+var config = require('./config');
 
 var crontab = require('node-crontab'); // for scheduled database cleanup
 
 db.sync().then(function(){
-    crontab.scheduleJob("0 0 */10 * *", function(){
+    crontab.scheduleJob("0 0 */" +
+                        config.days_to_destroy + " * *", function(){
         db.truncate();
     });
 });
@@ -46,6 +48,6 @@ io.on('connection', function(socket){
 });
 
 
-http.listen(8000, function(){
-  console.log('Server up and running, listening at port 8000');
+http.listen(config.port, function(){
+  console.log('Server up and running, listening at port ' + config.port);
 });

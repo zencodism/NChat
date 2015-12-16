@@ -11,5 +11,9 @@ socket.on('incoming', function(msg){
     var time = msg.time,
         user = msg.user,
         text = msg.text;
-    $('#messages').append($('<li>').text(time + " " + user + " " + text));
+        
+    var pattern = "<span class='time'>" + time + "</span>" +
+        "<span class='user'>" + user + "</span>" +
+        "<span class='text'>" + text + "</span>";
+    $('#messages').append($('<li>').html(pattern));
 });

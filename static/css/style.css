@@ -32,3 +32,21 @@ body{
 #messages li:nth-child(odd){
     background: #eee;
 }
+
+span.time{
+    font-size: small;
+    font-color: #777777;
+    width: 80px;
+    padding: 5px;
+}
+
+span.user{
+    font-weight: bold;
+    font-color: #777777;
+    width: 100px;
+    padding: 5px;
+}
+
+span.text{
+    padding: 10px;
+}
