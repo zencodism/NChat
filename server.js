@@ -26,14 +26,20 @@ app.get('/', function(req, res){
 
 
 io.on('connection', function(socket){
-    db.findAll().then(function(messages){
+/*    db.findAll().then(function(messages){
         messages.forEach(function(message){
             io.emit('incoming', message);
         });
     });
-            
+*/            
     var user = uid(18);
     log.info("User connected, generated username: " + user);
+    var message = {
+        'time': new Date(),
+        'user': "Server",
+        'text': "New connection, marked as " + user
+    };
+    io.emit('incoming', message);
     socket.on('incoming', function(msg){
         log.info("Passing down message: " + msg);
         var message = {
@@ -41,12 +47,12 @@ io.on('connection', function(socket){
             'user': user,
             'text': msg
         };
-        db.create({
+ /*       db.create({
             user: message.user,
             time: message.time,
             text: message.text
         });
-        io.emit('incoming', message);
+  */      io.emit('incoming', message);
     });
 });
 
